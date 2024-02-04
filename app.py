@@ -14,7 +14,7 @@ df = None
 zipcode = 0
 
 # APIS
-api_key = "fedbba368fc68a5b3f3fc1e627152a82"
+api_key = "your_open_weather_api_key"
 API_BASE_URL = "http://127.0.0.1:8000"
 
 
