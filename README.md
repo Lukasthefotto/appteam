@@ -221,12 +221,7 @@ To test the API endpoints with Postman, follow these instructions:
 1. Use the `/healthinfo/{workout_id}` and `/weatherinfo/{workout_id}` (GET) endpoints to retrieve health and weather data.
 2. Replace `{workout_id}` with the actual ID of the workout.
 3. Send the request and expect a 200 status code with the requested information in response.
-
+4. 
 Remember to handle each endpoint with its corresponding HTTP method and required parameters. Happy testing!
 
----
-
-For any additional help or issues, please open an issue in the repository or contact the maintainers directly.
-
-Thank you for using the Workout Tracker API!
 
