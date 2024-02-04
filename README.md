@@ -159,3 +159,74 @@ This API is built using Python and relies on several external libraries and modu
 7. **random**: The random module is a standard Python library that allows generating random numbers and values. It is utilized for various purposes, such as generating random data or making random selections.
 
 8. **statistics**: The statistics module is part of the Python standard library and offers functions for statistical operations. It is used in the project to compute average values and perform basic statistical calculations.
+
+# Workout Tracker API
+
+## Overview
+
+The Workout Tracker API is designed to provide a robust and scalable solution for individuals looking to log and track their fitness activities. This API handles workout sessions, calculates health metrics, and integrates with external services to enrich the workout data with weather information.
+
+## Design Decisions
+
+- **RESTful Architecture**: We have adhered to REST principles to ensure that our API is stateless, cacheable, and easy to use.
+- **In-Memory Data Store**: For simplicity and demonstration purposes, we're using an in-memory list to store workout data, with plans to migrate to a database for production.
+- **Concurrency Control**: A threading lock is employed to manage concurrent modifications to the workout data safely.
+- **External API Integration**: Open Weather API integration is used to fetch real-time weather data for each workout session.
+- **User Interface**: A Streamlit application provides an interactive frontend for data input and visualization, demonstrating the API's capabilities.
+
+## Choice of Tools
+
+- **FastAPI**: Chosen for its performance, ease of use, and automatic Swagger/OpenAPI documentation generation.
+- **Streamlit**: Selected for its ability to rapidly develop data applications and interactive user interfaces.
+- **Pydantic**: Used for data validation and schema definition within FastAPI.
+- **Plotly**: Integrated with Streamlit for data visualization and analytical insights.
+
+## Getting Started
+
+To get started with the Workout Tracker API, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Install the required dependencies using `pip install -r requirements.txt`.
+3. Start the FastAPI server with `uvicorn main:app --reload`.
+
+## Testing with Postman
+
+To test the API endpoints with Postman, follow these instructions:
+
+### Setup
+
+1. Open Postman and create a new collection for the Workout Tracker API.
+2. Set the base URL to your local server (typically `http://127.0.0.1:8000`).
+
+### Adding a Workout
+
+1. Use the `/workouts/` (POST) endpoint to create a new workout.
+2. In the Body tab, select 'raw' and 'JSON' format.
+3. Input the workout details as JSON.
+4. Send the request and expect a 200 status code with the workout data in response.
+
+### Retrieving Workouts
+
+1. Use the `/workouts/` (GET) endpoint to retrieve all workouts.
+2. Send the request and expect a 200 status code with a list of workouts in response.
+
+### Fetching Workout Details
+
+1. Use the `/workouts/{workout_id}` (GET) endpoint to fetch details of a specific workout.
+2. Replace `{workout_id}` with the actual ID of the workout.
+3. Send the request and expect a 200 status code with the workout details or a 404 if not found.
+
+### Health Metrics and Weather Information
+
+1. Use the `/healthinfo/{workout_id}` and `/weatherinfo/{workout_id}` (GET) endpoints to retrieve health and weather data.
+2. Replace `{workout_id}` with the actual ID of the workout.
+3. Send the request and expect a 200 status code with the requested information in response.
+
+Remember to handle each endpoint with its corresponding HTTP method and required parameters. Happy testing!
+
+---
+
+For any additional help or issues, please open an issue in the repository or contact the maintainers directly.
+
+Thank you for using the Workout Tracker API!
+
