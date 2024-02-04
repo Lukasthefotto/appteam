@@ -1,6 +1,6 @@
 # API Usage Guide
 
-This API provides functionality for managing and retrieving workout data, as well as providing health and weather information related to workouts.
+This API provides functionality for managing and retrieving workout data, as well as providing health and weather information related to workouts. **(API KEY FOR WEATHER NOT PROVIDED)**
 
 ## Endpoints
 
