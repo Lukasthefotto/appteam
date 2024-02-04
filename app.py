@@ -7,31 +7,38 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 from PIL import Image
 import plotly.express as px
 
-
+# Data Frame
 df = None
+
+# Temp Value for Zipcode
 zipcode = 0
+
 # APIS
 api_key = "fedbba368fc68a5b3f3fc1e627152a82"
 API_BASE_URL = "http://127.0.0.1:8000"
-base_url = "http://api.openweathermap.org/data/2.5/weather?"
-zip_url = f'http://api.openweathermap.org/data/2.5/weather?zip={zipcode}&appid={api_key}'
-def add_workout(workout):
 
+
+# Post request to add workout
+def add_workout(workout):
     response = requests.post(f"{API_BASE_URL}/workouts/", json=workout)
     return response.json()
 
+# Get request to retrieve workouts
 def get_workouts():
     response = requests.get(f"{API_BASE_URL}/workouts/")
     return response.json()
 
+# Get request to retrieve weather information
 def get_weather(wkid: int):
     response = requests.get(f"{API_BASE_URL}/weatherinfo/{wkid}")
     return response.json()
 
+# Get request to retrieve health information
 def get_health(wkid: int):
     response = requests.get(f"{API_BASE_URL}/healthinfo/{wkid}")
     return response.json()
 
+# Get request to retrieve aggregated data
 def get_summarized():
     response = requests.get(f"{API_BASE_URL}/summarizedinfo/")
     return response.json()
@@ -83,7 +90,6 @@ with st.expander("Weather Data"):
          except:
              st.write("Workout id not found")
 
-
 with st.expander("Health Details"):
     with st.form("Workout Id Health"):
         id = st.number_input("Workout Id", step=1, min_value=0)
@@ -104,7 +110,6 @@ def helper_func(iterations, step):
         temp = step * counter
         temp_array.append(temp)
     return temp_array
-
 
 with st.expander("Aggregated Data Summary"):
     st.write("5 workouts in database minimum!!!")
@@ -134,6 +139,7 @@ with st.expander("Aggregated Data Summary"):
     else:
         st.write("You do not have the minimum workouts necessisary")
 st.write("## View Workouts")
+
 if st.button("Refresh"):
     workouts = get_workouts()
     df = dataframe_explorer(pd.DataFrame.from_dict(workouts))
@@ -155,8 +161,3 @@ if st.button("Refresh"):
             st.write("---")
         else:
             st.write("No workouts found, please add some and try again!")
-
-
-
-def dict_to_sql():
-    pass
